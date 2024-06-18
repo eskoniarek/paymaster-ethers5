@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Provider, Wallet, utils, Contract } from 'zksync-web3';
 import * as ethers from 'ethers';
+import ERC20Artifact from 'openzeppelin-solidity/build/contracts/ERC20Detailed.json';
 
+interface ERC20ArtifactType {
+  abi: any[];
+}
 const PAYMASTER_ADDRESS = '<PAYMASTER_ADDRESS>';
 const TOKEN_ADDRESS = '<TOKEN_ADDRESS>';
 const EMPTY_WALLET_PRIVATE_KEY = '<EMPTY_WALLET_PRIVATE_KEY>';
@@ -16,11 +20,9 @@ function Paymaster() {
       const provider = new Provider('https://testnet.era.zksync.dev');
       const emptyWallet = new Wallet(EMPTY_WALLET_PRIVATE_KEY, provider);
 
-      const erc20Artifact = await import('../../artifacts/MyERC20.json');
-      const erc20 = new Contract(TOKEN_ADDRESS, erc20Artifact.abi, emptyWallet);
+      const erc20 = new Contract(TOKEN_ADDRESS, (ERC20Artifact as ERC20ArtifactType).abi, emptyWallet);
 
       const gasPrice = await provider.getGasPrice();
-
       const paymasterParams = utils.getPaymasterParams(PAYMASTER_ADDRESS, {
         type: 'ApprovalBased',
         token: TOKEN_ADDRESS,
