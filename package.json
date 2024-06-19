@@ -13,6 +13,7 @@
     "@openzeppelin/contracts": "^4.7.3",
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
+    "@types/react": "^18.3.3",
     "autoprefixer": "^10.4.19",
     "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",

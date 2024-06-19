@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Provider, Wallet, utils, Contract } from 'zksync-web3';
 import * as ethers from 'ethers';
 import ERC20Artifact from 'openzeppelin-solidity/build/contracts/ERC20Detailed.json';
+import { ContractInterface } from 'ethers';
 
 interface ERC20ArtifactType {
-  abi: any[];
+  abi: ContractInterface;
 }
 const PAYMASTER_ADDRESS = '<PAYMASTER_ADDRESS>';
 const TOKEN_ADDRESS = '<TOKEN_ADDRESS>';
